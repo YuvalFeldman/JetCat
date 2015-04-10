@@ -14,8 +14,14 @@ public class CameraZoom : MonoBehaviour {
 	}
 
 	void Update(){
+
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("Keep State") && firstRun){
 			menuCanvas.enabled = true;
+		}
+
+		if(animator.GetCurrentAnimatorStateInfo(0).IsName("Finished")){
+			animator.enabled = false;
+			this.enabled = false;
 		}
 	}
 
