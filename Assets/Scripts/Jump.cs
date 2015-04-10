@@ -95,6 +95,8 @@ public class Jump : MonoBehaviour {
 
 		scoreText.text = "" + WallOfScore.GetComponent<WallOfScore>().score;
 
+
+
 		if (collision.gameObject.tag == "Terrain") {
 
 			CatAnimator.SetBool("notgrounded", false);

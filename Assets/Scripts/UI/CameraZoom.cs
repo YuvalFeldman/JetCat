@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class CameraZoom : MonoBehaviour {
+
+
+
 	public Animator animator;
 	public bool firstRun;
 	public Canvas menuCanvas, scoreCanvas;
@@ -15,13 +18,16 @@ public class CameraZoom : MonoBehaviour {
 
 	void Update(){
 
-		if(animator.GetCurrentAnimatorStateInfo(0).IsName("Keep State") && firstRun){
-			menuCanvas.enabled = true;
-		}
+		if (animator != null) {
 
-		if(animator.GetCurrentAnimatorStateInfo(0).IsName("Finished")){
-			animator.enabled = false;
-			this.enabled = false;
+			if (animator.GetCurrentAnimatorStateInfo (0).IsName ("Finished")) {
+				animator.enabled = false;
+			}
+
+			if (animator.GetCurrentAnimatorStateInfo (0).IsName ("Keep State") && firstRun) {
+				menuCanvas.enabled = true;
+			}
+
 		}
 	}
 
