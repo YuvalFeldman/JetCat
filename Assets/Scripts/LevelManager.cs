@@ -15,6 +15,8 @@ public class LevelManager : MonoBehaviour {
 	
 	void Awake () {
 
+		Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
 		if (Advertisement.isSupported) {
 			Advertisement.allowPrecache = true;
 			Advertisement.Initialize("30796", false);
