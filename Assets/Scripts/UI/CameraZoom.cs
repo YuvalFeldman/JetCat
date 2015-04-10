@@ -3,28 +3,16 @@ using System.Collections;
 
 public class CameraZoom : MonoBehaviour {
 	public Animator animator;
-	private float timer;
-	public bool firstRun;
-
-	// Use this for initialization
-	void Start () {
-		timer = 3;
-		firstRun = true;
-		animator.enabled = true;
-	}
+	//public bool firstRun;
+	public Canvas menu;
 	
-	// Update is called once per frame
-	void Update () {
-		if(firstRun){
-			timer -= Time.deltaTime;
-			if ( timer< 0 )
-			{
-				animator.SetBool("Zoom", true);
-				firstRun = false;
-				this.enabled = false;
-			}
-		} else {
-			this.enabled = false;
-		}
+	void Start () {
+		animator.enabled = true;
+		menu.enabled = true;
+	}
+
+	public void Play () {
+		animator.SetBool("Zoom", true);
+		menu.enabled = false;
 	}
 }
