@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 
 public class FloorOfDeath : MonoBehaviour {
-
+	public Canvas loseScreen;
 	public Text text;
 	public Text highScore;
 
@@ -19,6 +19,6 @@ public class FloorOfDeath : MonoBehaviour {
 		if (LevelManager.manager.adsCounter <= 0) {
 			LevelManager.manager.DisplayAd();
 		}
-		Application.LoadLevel (Application.loadedLevel);
+		loseScreen.enabled = true;
 	}
 }
