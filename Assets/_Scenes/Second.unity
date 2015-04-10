@@ -4396,7 +4396,7 @@ GameObject:
   - 114: {fileID: 1195104336}
   - 114: {fileID: 1195104335}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Score Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4477,11 +4477,11 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!1 &1228964110 stripped
+--- !u!1 &1228964110
 GameObject:
   m_PrefabParentObject: {fileID: 186940, guid: cec81952275d6dc4f8a7864ed1e29b27, type: 2}
   m_PrefabInternal: {fileID: 160542964}
---- !u!4 &1228964113 stripped
+--- !u!4 &1228964113
 Transform:
   m_PrefabParentObject: {fileID: 481036, guid: cec81952275d6dc4f8a7864ed1e29b27, type: 2}
   m_PrefabInternal: {fileID: 160542964}
@@ -5802,7 +5802,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1430297023}
-  menu: {fileID: 10800058}
+  firstRun: 0
+  menuCanvas: {fileID: 10800058}
+  scoreCanvas: {fileID: 1195104337}
 --- !u!1 &1485387453
 GameObject:
   m_ObjectHideFlags: 0
