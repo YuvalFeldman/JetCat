@@ -4975,6 +4975,7 @@ MonoBehaviour:
   BackGround: {fileID: 254158180}
   BackGroundSprite1: {fileID: 21300000, guid: 1d4ef07ac3cac9c48b4f43510d9eccf4, type: 3}
   BackGroundSprite2: {fileID: 21300000, guid: cfc765cb729b3aa47929baafadbebc05, type: 3}
+  davidSucks: {fileID: 0}
   Pyramid1: {fileID: 1433215149}
   Pyramid2: {fileID: 1888216257}
   Pyramid3: {fileID: 22381697}

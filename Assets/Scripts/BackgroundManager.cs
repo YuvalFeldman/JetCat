@@ -7,6 +7,8 @@ public class BackgroundManager : MonoBehaviour {
 	public Sprite BackGroundSprite1;
 	public Sprite BackGroundSprite2;
 
+	public GameObject davidSucks;
+
 	public GameObject Pyramid1;
 	public GameObject Pyramid2;
 	public GameObject Pyramid3;
