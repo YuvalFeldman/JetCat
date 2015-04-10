@@ -41,6 +41,12 @@ public class BackgroundManager : MonoBehaviour {
 	public GameObject Cloud4;
 	public GameObject Cloud5;
 
+	private float Cloud1Speed;
+	private float Cloud2Speed;
+	private float Cloud3Speed;
+	private float Cloud4Speed;
+	private float Cloud5Speed;
+
 	GameObject LastCloud;
 
 	public Sprite CloudSprite1;
@@ -105,7 +111,7 @@ public class BackgroundManager : MonoBehaviour {
 			DeactivateTrees();
 			BackGround.GetComponent<SpriteRenderer>().sprite = BackGroundSprite2;
 
-			Pyramid1.transform.position = new Vector3(Random.Range (-3f, 1f), Random.Range (-12f, -8f), 0);
+			Pyramid1.transform.position = new Vector3(Random.Range (-1f, 2f), Random.Range (-12f, -8f), 0);
 
 			Pyramid2.transform.position = new Vector3(Pyramid1.transform.position.x + Random.Range (0, 7f), Random.Range (-12f, -8f), 0);
 
@@ -129,23 +135,37 @@ public class BackgroundManager : MonoBehaviour {
 
 		InitCloudArray ();
 
-		Cloud1.transform.position = new Vector3 (Random.Range (-2.8f, 1.8f), Random.Range (-2.22f, -5.28f), 0);
+		Cloud1.transform.position = new Vector3 (Random.Range (2.8f, 5.8f), Random.Range (-2.22f, -5.28f), 0);
 		Cloud1.GetComponent<SpriteRenderer> ().sprite = arrayCloudSprites [Random.Range (0, 4)];
 
-		Cloud2.transform.position = new Vector3 (Cloud1.transform.position.x + Random.Range (1.4f, 4.35f), Random.Range (-2.22f, -5.28f), 0);
+		Cloud2.transform.position = new Vector3 (Cloud1.transform.position.x + Random.Range (4.4f, 7.35f), Random.Range (-2.22f, -5.28f), 0);
 		Cloud2.GetComponent<SpriteRenderer> ().sprite = arrayCloudSprites [Random.Range (0, 4)];
 
-		Cloud3.transform.position = new Vector3 (Cloud2.transform.position.x + Random.Range (1.4f, 4.35f), Random.Range (-2.22f, -5.28f), 0);
+		Cloud3.transform.position = new Vector3 (Cloud2.transform.position.x + Random.Range (4.4f, 7.35f), Random.Range (-2.22f, -5.28f), 0);
 		Cloud3.GetComponent<SpriteRenderer> ().sprite = arrayCloudSprites [Random.Range (0, 4)];
 
-		Cloud4.transform.position = new Vector3 (Cloud3.transform.position.x + Random.Range (1.4f, 4.35f), Random.Range (-2.22f, -5.28f), 0);
+		Cloud4.transform.position = new Vector3 (Cloud3.transform.position.x + Random.Range (4.4f, 7.35f), Random.Range (-2.22f, -5.28f), 0);
 		Cloud4.GetComponent<SpriteRenderer> ().sprite = arrayCloudSprites [Random.Range (0, 4)];
 
-		Cloud5.transform.position = new Vector3 (Cloud4.transform.position.x + Random.Range (1.4f, 4.35f), Random.Range (-2.22f, -5.28f), 0);
+		Cloud5.transform.position = new Vector3 (Cloud4.transform.position.x + Random.Range (4.4f, 7.35f), Random.Range (-2.22f, -5.28f), 0);
 		Cloud5.GetComponent<SpriteRenderer> ().sprite = arrayCloudSprites [Random.Range (0, 4)];
 
 		LastCloud = Cloud5;
 
+		Cloud1Speed = Random.Range (0.0015f, 0.004f);
+		Cloud2Speed = Random.Range (0.0015f, 0.004f);
+		Cloud3Speed = Random.Range (0.0015f, 0.004f);
+		Cloud4Speed = Random.Range (0.0015f, 0.004f);
+		Cloud5Speed = Random.Range (0.0015f, 0.004f);
+
+	}
+
+	void Update() {
+		Cloud1.transform.position = new Vector3 (Cloud1.transform.position.x - Cloud1Speed, Cloud1.transform.position.y, 0);
+		Cloud2.transform.position = new Vector3 (Cloud2.transform.position.x - Cloud2Speed, Cloud2.transform.position.y, 0);
+		Cloud3.transform.position = new Vector3 (Cloud3.transform.position.x - Cloud3Speed, Cloud3.transform.position.y, 0);
+		Cloud4.transform.position = new Vector3 (Cloud4.transform.position.x - Cloud4Speed, Cloud4.transform.position.y, 0);
+		Cloud5.transform.position = new Vector3 (Cloud5.transform.position.x - Cloud5Speed, Cloud5.transform.position.y, 0);
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
@@ -167,7 +187,7 @@ public class BackgroundManager : MonoBehaviour {
 		} else if (other.gameObject.layer == 16) {
 			// Cloud Collision
 			GameObject cloud = other.gameObject;
-			cloud.transform.position = new Vector3(LastCloud.transform.position.x + Random.Range (1.4f, 4.35f), Random.Range (-2.22f, -5.28f), 0);
+			cloud.transform.position = new Vector3(LastCloud.transform.position.x + Random.Range (4.4f, 7.35f), Random.Range (-2.22f, -5.28f), 0);
 			cloud.GetComponent<SpriteRenderer> ().sprite = arrayCloudSprites [Random.Range (0, 4)];
 			LastCloud = cloud;
 		}

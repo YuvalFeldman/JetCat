@@ -22,6 +22,7 @@ public class CameraZoom : MonoBehaviour {
 
 			if (animator.GetCurrentAnimatorStateInfo (0).IsName ("Finished")) {
 				animator.enabled = false;
+				LevelManager.manager.cameraFinished = true;
 			}
 
 			if (animator.GetCurrentAnimatorStateInfo (0).IsName ("Keep State") && firstRun) {

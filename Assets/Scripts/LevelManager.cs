@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour {
 	public static LevelManager manager;
 	public int bestPillarScore;
 
+	public bool cameraFinished;
+
 	public int adsCounter;
 	
 	private string fileEnding = ".dat";
@@ -31,6 +33,8 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	void Start(){
+		cameraFinished = false;
+
 		adsCounter = 4;
 
 		bestPillarScore = 0;

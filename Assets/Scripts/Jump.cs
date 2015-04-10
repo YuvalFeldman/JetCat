@@ -10,6 +10,8 @@ public class Jump : MonoBehaviour {
 	private float SoundPower, jumpPower, tempCounter;
 	private bool time, jumpyReady, grounded;
 
+	private bool cameraFinished = false;
+
 	public GameObject WallOfScore, smallJetStream, largeJetStream, startSmallJetStream;
 
 	private ParticleSystem smallJetEmitter;
@@ -39,8 +41,14 @@ public class Jump : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		SoundPower = GetComponent<SoundForm> ().getLoudness () * 5;
 
+		// Doesn't move cat unless camera finished animation
+		if (!cameraFinished) {
+			cameraFinished = LevelManager.manager.cameraFinished;
+			return;
+		}
+
+		SoundPower = GetComponent<SoundForm> ().getLoudness () * 5;
 
 		if (SoundPower >= 5 && grounded) {
 			if (!time) {
