@@ -16,6 +16,7 @@ PlayerSettings:
   cloudProjectId: 
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
+  m_ShowUnitySplashScreen: 1
   defaultScreenWidth: 1024
   defaultScreenHeight: 768
   defaultScreenWidthWeb: 960
@@ -118,10 +119,11 @@ PlayerSettings:
     serializedVersion: 2
     rgba: 21
   iOSLaunchScreenFillPct: 1
+  iOSLaunchScreenSize: 100
   iOSLaunchScreenCustomXibPath: 
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
-  AndroidKeystoreName: D:/Desktop/Game/Jam/jet-cat/jetcat.keystore
+  AndroidKeystoreName: C:/Users/admin/Desktop/Jet Cat/jetcat.keystore
   AndroidKeyaliasName: whoop studios
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
@@ -130,6 +132,7 @@ PlayerSettings:
   - width: 320
     height: 180
     banner: {fileID: 0}
+  androidGamepadSupportLevel: 0
   resolutionDialogBanner: {fileID: 0}
   m_BuildTargetIcons:
   - m_BuildTarget: 
