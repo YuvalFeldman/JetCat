@@ -14,8 +14,9 @@ PlayerSettings:
   companyName: Whoop Studios
   productName: Jet Cat
   cloudProjectId: 
-  defaultCursor: {fileID: 2800000, guid: b3e0681a6b6625c4f93db15aaa6ad4f6, type: 3}
+  defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
+  m_ShowUnitySplashScreen: 1
   defaultScreenWidth: 1024
   defaultScreenHeight: 768
   defaultScreenWidthWeb: 960
@@ -118,18 +119,20 @@ PlayerSettings:
     serializedVersion: 2
     rgba: 21
   iOSLaunchScreenFillPct: 1
+  iOSLaunchScreenSize: 100
   iOSLaunchScreenCustomXibPath: 
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
-  AndroidKeystoreName: C:/Users/Nero/Desktop/Project Fire/In Work/Unity/jet-cat/jetcat.keystore
+  AndroidKeystoreName: C:/Users/admin/Desktop/Jet Cat/jetcat.keystore
   AndroidKeyaliasName: whoop studios
-  AndroidTVCompatibility: 1
+  AndroidTVCompatibility: 0
   AndroidIsGame: 1
   androidEnableBanner: 1
   m_AndroidBanners:
   - width: 320
     height: 180
     banner: {fileID: 0}
+  androidGamepadSupportLevel: 0
   resolutionDialogBanner: {fileID: 0}
   m_BuildTargetIcons:
   - m_BuildTarget: 

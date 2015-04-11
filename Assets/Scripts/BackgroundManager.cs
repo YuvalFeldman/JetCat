@@ -19,8 +19,6 @@ public class BackgroundManager : MonoBehaviour {
 	public GameObject Pyramid8;
 	public GameObject LastPyramid;
 
-	bool firstPyramidCollision = true;
-
 	public GameObject Tree1;
 	public GameObject Tree2;
 	public GameObject Tree3;
@@ -32,8 +30,6 @@ public class BackgroundManager : MonoBehaviour {
 	public GameObject Tree9;
 	public GameObject Tree10;
 	public GameObject LastTree;
-
-	bool firstTree = true;
 
 	public GameObject Cloud1;
 	public GameObject Cloud2;
@@ -60,15 +56,10 @@ public class BackgroundManager : MonoBehaviour {
 	GameObject[] arrayOfTrees = new GameObject[10];
 	GameObject[] arrayOfRandomTrees = new GameObject[10];
 	bool[] treesExist = new bool[10];
-	int filledTrees = 0;
 
 	int DEATH_COLLISION_LAYER = 17;
 
 	bool theme1;
-
-	float yPyramidMax = -12;
-	float yPramidMin = -8;
-
 
 	// Use this for initialization
 	void Start () {

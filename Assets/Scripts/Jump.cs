@@ -15,7 +15,6 @@ public class Jump : MonoBehaviour {
 
 	public GameObject WallOfScore, smallJetStream, largeJetStream, startSmallJetStream;
 
-	private ParticleSystem smallJetEmitter;
 	private ParticleSystem largeJetEmitter;
 
 	bool firstParticleDestroy = true;
@@ -23,7 +22,6 @@ public class Jump : MonoBehaviour {
 	public Animator plusAnimator;
 	public Text scoreText, plusText, finalScore;
 	private int score = 0;
-	private bool firstPlatform = true;
 
 	public bool firstJumpHappened = false;
 	private AudioSource meowSource;
@@ -42,7 +40,6 @@ public class Jump : MonoBehaviour {
 		grounded = true;
 		time = true;
 		jumpyReady = false;
-		tempCounter = 0;
 		meowSource = WallOfScore.GetComponent<AudioSource> ();
 	}
 	
@@ -74,8 +71,6 @@ public class Jump : MonoBehaviour {
 					} else {
 
 					}
-
-					smallJetEmitter = smallJetStream.GetComponent<ParticleSystem> ();
 				}
 				jumpyReady = true;
 				powerBar.fillAmount = jumpPower / 10;
