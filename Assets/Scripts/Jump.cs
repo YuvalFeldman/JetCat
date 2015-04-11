@@ -81,6 +81,8 @@ public class Jump : MonoBehaviour {
 
 		if (jumpyReady && SoundPower < 1 && grounded) {
 
+			plusAnimator.SetBool("Increased", false);
+
 			meowSource.Play();
 
 			if (!firstJumpHappened) {
@@ -123,7 +125,7 @@ public class Jump : MonoBehaviour {
 			int platformCount = WallOfScore.GetComponent<WallOfScore>().platformCount;
 
 			WallOfScore.GetComponent<WallOfScore>().platformCount = 0;
-			plusAnimator.SetBool("Increased", false);
+			plusAnimator.SetBool("Increased", true);
 
 			switch (platformCount) {
 			case 1:
