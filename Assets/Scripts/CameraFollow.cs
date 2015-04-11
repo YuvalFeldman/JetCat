@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraFollow : MonoBehaviour {
 
 	public GameObject Cat;
-
+	public Animator scoreAnimator;
 	Jump catJump;
 
 	private bool stopPurring = false;
@@ -19,6 +19,7 @@ public class CameraFollow : MonoBehaviour {
 
 		if (stopPurring) {
 			GetComponent<AudioSource> ().Stop ();
+			scoreAnimator.SetBool("FadeOut", true);
 		} else {
 			stopPurring = catJump.firstJumpHappened;
 		}

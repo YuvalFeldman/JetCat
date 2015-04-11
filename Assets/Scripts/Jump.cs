@@ -20,7 +20,8 @@ public class Jump : MonoBehaviour {
 
 	bool firstParticleDestroy = true;
 
-	public Text scoreText;
+	public Animator plusAnimator;
+	public Text scoreText, plusText;
 	private int score = 0;
 	private bool firstPlatform = true;
 
@@ -127,22 +128,27 @@ public class Jump : MonoBehaviour {
 			int platformCount = WallOfScore.GetComponent<WallOfScore>().platformCount;
 
 			WallOfScore.GetComponent<WallOfScore>().platformCount = 0;
+			plusAnimator.SetBool("Increased", false);
 
 			switch (platformCount) {
 			case 1:
 				score += 1;
+				plusText.text = "+1";
 				break;
 			case 2:
 				score += 4;
+				plusText.text = "+4";
 				break;
 			case 3:
 				score += 8;
+				plusText.text = "+8";
 				break;
 			case 4:
 				score += 16;
+				plusText.text = "+16";
 				break;
 			}
-
+			plusAnimator.SetBool("Increased", true);
 			scoreText.text = "" + score;
 
 			CatAnimator.SetBool("notgrounded", false);

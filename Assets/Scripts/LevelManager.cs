@@ -8,17 +8,16 @@ using UnityEngine.Advertisements;
 public class LevelManager : MonoBehaviour {
 	public static LevelManager manager;
 	public int bestPillarScore;
-
-	public bool cameraFinished;
-
+	public bool cameraFinished, mute;
+	public int highScore;
 	public int adsCounter;
 	
 	private string fileEnding = ".dat";
 	
 	void Awake () {
-
+		highScore = Load ();
+		mute = false;
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
-
 		if (Advertisement.isSupported) {
 			Advertisement.allowPrecache = true;
 			Advertisement.Initialize("30796", false);
@@ -34,9 +33,9 @@ public class LevelManager : MonoBehaviour {
 
 	void Start(){
 		cameraFinished = false;
-
-		adsCounter = 10;
-
+		if(adsCounter == 0){
+			adsCounter = 10;
+		}
 		bestPillarScore = 0;
 	}
 	//Overwrites data, need to fix
@@ -49,15 +48,15 @@ public class LevelManager : MonoBehaviour {
 				LevelData dataToSave = new LevelData ();
 				bestPillarScore = newBestScore;
 				dataToSave.bestPillarScore = newBestScore;
-
-
+				dataToSave.mute = mute;
+				dataToSave.adCount = adsCounter;
 				bFormatter.Serialize (file, dataToSave);
 				file.Close ();
 		}
 	}
 
 	public void DisplayAd() {
-		adsCounter = 7;
+		adsCounter = 10;
 		Advertisement.Show(null, new ShowOptions{pause = true, resultCallback = result => {}});
 	}
 
@@ -68,8 +67,8 @@ public class LevelManager : MonoBehaviour {
 			FileStream file = File.Open (Application.persistentDataPath + "/scoreInfo" + fileEnding, FileMode.Open);
 
 			LevelData dataToLoad = (LevelData)bf.Deserialize (file);
-
-
+			this.adsCounter = dataToLoad.adCount;
+			this.mute = dataToLoad.mute;
 			this.bestPillarScore = dataToLoad.bestPillarScore;
 			file.Close ();
 			return bestPillarScore;
@@ -85,4 +84,6 @@ public class LevelManager : MonoBehaviour {
 [Serializable]
 class LevelData{
 	public int bestPillarScore;
+	public bool mute;
+	public int adCount;
 }
