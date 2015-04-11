@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour {
 	private string fileEnding = ".dat";
 	
 	void Awake () {
-		mute = true;
+		mute = false;
 		highScore = Load ();
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		if (Advertisement.isSupported) {
