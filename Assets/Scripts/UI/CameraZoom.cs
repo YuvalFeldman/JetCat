@@ -29,7 +29,9 @@ public class CameraZoom : MonoBehaviour {
 		logoAnimator.enabled = true;
 		animatorCamera.enabled = true;
 		scoreCanvas.enabled = false;
-		menuCanvas.enabled = false;
+		menuCanvas.enabled = true;
+		menuCanvas.GetComponent<CanvasGroup>().alpha = 0;
+		menuAnimator.enabled = false;
 		firstRun = true;
 	}
 
@@ -45,7 +47,7 @@ public class CameraZoom : MonoBehaviour {
 			}
 
 			if (animatorCamera.GetCurrentAnimatorStateInfo (0).IsName ("Keep State") && firstRun) {
-				menuCanvas.enabled = true;
+				menuAnimator.enabled = true;
 				menuAnimator.SetBool("Fade", true);
 			}
 
@@ -75,16 +77,16 @@ public class CameraZoom : MonoBehaviour {
 
 
 	public void Mute(){
-		music.volume = 0;
-		purr.volume = 0;
-		meow.volume = 0;
+		music.enabled = false;
+		purr.enabled = false;
+		meow.enabled = false;
 		LevelManager.manager.mute = true;
 	}
 
 	public void Unmute(){
-		music.volume = 0.05f;
-		purr.volume = 0.4f;
-		meow.volume = 0.493f;
+		music.enabled = true;
+		purr.enabled = true;
+		meow.enabled = true;
 		LevelManager.manager.mute = false;
 	}
 }

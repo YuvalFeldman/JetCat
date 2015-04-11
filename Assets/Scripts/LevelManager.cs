@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour {
 	private string fileEnding = ".dat";
 	
 	void Awake () {
-		mute = false;
+		mute = true;
 		highScore = Load ();
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		if (Advertisement.isSupported) {
@@ -36,7 +36,7 @@ public class LevelManager : MonoBehaviour {
 	void Start(){
 		cameraFinished = false;
 		if(adsCounter == 0){
-			adsCounter = 3;
+			adsCounter = 10;
 		}
 		bestPillarScore = 0;
 	}
@@ -58,7 +58,7 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public void DisplayAd() {
-		adsCounter = 3;
+		adsCounter = 10;
 		Advertisement.Show(null, new ShowOptions{pause = true, resultCallback = result => {}});
 	}
 
