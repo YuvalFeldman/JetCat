@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System; 
 using System.IO; 
@@ -30,6 +31,7 @@ public class LevelManager : MonoBehaviour {
 			Destroy(gameObject);
 		}
 	}
+	
 
 	void Start(){
 		cameraFinished = false;

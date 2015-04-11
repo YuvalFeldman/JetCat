@@ -7,10 +7,7 @@ public class FloorOfDeath : MonoBehaviour {
 	public Canvas loseScreen;
 	public Text text;
 	public Animator scoreAnimator;
-
-	void Start(){
-		text = GameObject.Find ("ScoreText").GetComponent<Text>();
-	}
+	
 
 	void OnTriggerEnter2D(Collider2D other) {
 		Destroy (other.GetComponent<Collider2D> ());

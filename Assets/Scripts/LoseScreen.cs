@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 
 public class LoseScreen : MonoBehaviour {
 	public Canvas loseScreen;
+	public Text  highScoreText;
 
 	void Start(){
 		loseScreen.enabled = false;
+		highScoreText.text = "" + LevelManager.manager.highScore;
 	}
 	// Use this for initialization
 	public void ShareImage () {
@@ -30,6 +33,7 @@ public class LoseScreen : MonoBehaviour {
 	
 	// Update is called once per frame
 	public void RestartLevel () {
+		LevelManager.manager.Load();
 		Application.LoadLevel (Application.loadedLevel);
 		loseScreen.enabled = false;
 	}

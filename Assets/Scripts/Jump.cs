@@ -21,7 +21,7 @@ public class Jump : MonoBehaviour {
 	bool firstParticleDestroy = true;
 
 	public Animator plusAnimator;
-	public Text scoreText, plusText;
+	public Text scoreText, plusText, finalScore;
 	private int score = 0;
 	private bool firstPlatform = true;
 
@@ -148,8 +148,10 @@ public class Jump : MonoBehaviour {
 				plusText.text = "+16";
 				break;
 			}
+
 			plusAnimator.SetBool("Increased", true);
 			scoreText.text = "" + score;
+			finalScore.text = "" + score;
 
 			CatAnimator.SetBool("notgrounded", false);
 			Debug.Log ("no?");
