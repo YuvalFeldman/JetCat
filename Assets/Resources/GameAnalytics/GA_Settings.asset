@@ -11,13 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0c0342116464e26abb476a494c827a, type: 3}
   m_Name: GA_Settings
   m_EditorClassIdentifier: 
-  TotalMessagesSubmitted: 0
+  TotalMessagesSubmitted: 479
   TotalMessagesFailed: 0
-  DesignMessagesSubmitted: 0
+  DesignMessagesSubmitted: 197
   DesignMessagesFailed: 0
   QualityMessagesSubmitted: 0
   QualityMessagesFailed: 0
-  ErrorMessagesSubmitted: 0
+  ErrorMessagesSubmitted: 282
   ErrorMessagesFailed: 0
   BusinessMessagesSubmitted: 0
   BusinessMessagesFailed: 0
@@ -49,15 +49,15 @@ MonoBehaviour:
   ArchiveMaxFileSize: 2000
   CustomUserID: 0
   SubmitInterval: 10
-  InternetConnectivity: 0
-  Start_AlwaysShowAds: 1
+  InternetConnectivity: 1
+  Start_AlwaysShowAds: 0
   Start_TimePlayed: 0
   Start_Sessions: 0
   TimePlayed: 300
   Sessions: 1
   Trigger_AdsEnabled: 0
   Trigger_AdsEnabled_network: 0
-  Trigger_SceneChange: 1
+  Trigger_SceneChange: 0
   Trigger_SceneChange_network: 0
   IAD_foldout: 1
   IAD_enabled: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
   IAD_position: {x: 0, y: 0}
   IAD_Duration: 10
   CB_foldout: 1
-  CurrentInspectorState: 1
+  CurrentInspectorState: 4
   ClosedHints: 
   DisplayHints: 0
   DisplayHintsScrollState: {x: 0, y: 0}

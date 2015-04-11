@@ -35,7 +35,7 @@ public class LevelManager : MonoBehaviour {
 	void Start(){
 		cameraFinished = false;
 
-		adsCounter = 4;
+		adsCounter = 10;
 
 		bestPillarScore = 0;
 	}
@@ -57,7 +57,7 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public void DisplayAd() {
-		adsCounter = 3;
+		adsCounter = 7;
 		Advertisement.Show(null, new ShowOptions{pause = true, resultCallback = result => {}});
 	}
 

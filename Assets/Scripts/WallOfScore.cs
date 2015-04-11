@@ -3,12 +3,12 @@ using System.Collections;
 
 public class WallOfScore : MonoBehaviour {
 
-	public int score;
+	public int platformCount;
 	private bool firstPlatform;
 
 	// Use this for initialization
 	void Start () {
-		score = 0;
+		platformCount = 0;
 		firstPlatform = true;
 	}
 	
@@ -21,7 +21,7 @@ public class WallOfScore : MonoBehaviour {
 		if (firstPlatform) {
 			firstPlatform = !firstPlatform;
 		} else {
-			score++;
+			platformCount++;
 		}
 	}
 }

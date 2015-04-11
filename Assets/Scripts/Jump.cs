@@ -11,6 +11,7 @@ public class Jump : MonoBehaviour {
 	private bool time, jumpyReady, grounded;
 
 	private bool cameraFinished = false;
+	private bool startedRotating = false;
 
 	public GameObject WallOfScore, smallJetStream, largeJetStream, startSmallJetStream;
 
@@ -20,7 +21,11 @@ public class Jump : MonoBehaviour {
 	bool firstParticleDestroy = true;
 
 	public Text scoreText;
+	private int score = 0;
 	private bool firstPlatform = true;
+
+	public bool firstJumpHappened = false;
+	private AudioSource meowSource;
 
 	// Use this for initialization
 	void Start () {
@@ -37,10 +42,15 @@ public class Jump : MonoBehaviour {
 		time = true;
 		jumpyReady = false;
 		tempCounter = 0;
+		meowSource = WallOfScore.GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (startedRotating) {
+			return;
+		}
 
 		// Doesn't move cat unless camera finished animation
 		if (!cameraFinished) {
@@ -74,6 +84,12 @@ public class Jump : MonoBehaviour {
 		}
 
 		if (jumpyReady && SoundPower < 1 && grounded) {
+
+			meowSource.Play();
+
+			if (!firstJumpHappened) {
+				firstJumpHappened = true;
+			}
 			Destroy (smallJetStream);
 			largeJetEmitter.Play ();
 			jumpPower = Mathf.Clamp (jumpPower, 2.5f, 10f);
@@ -101,11 +117,33 @@ public class Jump : MonoBehaviour {
 
 	public void OnCollisionEnter2D (Collision2D collision){
 
-		scoreText.text = "" + WallOfScore.GetComponent<WallOfScore>().score;
-
-
+		if (collision.gameObject.layer == 11) {
+			CatAnimator.SetBool("Rotating", true);
+			startedRotating = true;
+		}
 
 		if (collision.gameObject.tag == "Terrain") {
+
+			int platformCount = WallOfScore.GetComponent<WallOfScore>().platformCount;
+
+			WallOfScore.GetComponent<WallOfScore>().platformCount = 0;
+
+			switch (platformCount) {
+			case 1:
+				score += 1;
+				break;
+			case 2:
+				score += 4;
+				break;
+			case 3:
+				score += 8;
+				break;
+			case 4:
+				score += 16;
+				break;
+			}
+
+			scoreText.text = "" + score;
 
 			CatAnimator.SetBool("notgrounded", false);
 			Debug.Log ("no?");

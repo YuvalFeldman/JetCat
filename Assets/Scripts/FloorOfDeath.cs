@@ -14,6 +14,9 @@ public class FloorOfDeath : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
+		Destroy (other.GetComponent<Collider2D> ());
+		other.GetComponent<Jump> ().enabled = false;
+		other.GetComponent<Rigidbody2D> ().isKinematic = true;
 		LevelManager.manager.Save (int.Parse(text.text));
 		LevelManager.manager.adsCounter--;
 		if (LevelManager.manager.adsCounter <= 0) {
