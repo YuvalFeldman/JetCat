@@ -23,6 +23,7 @@ public class CameraZoom : MonoBehaviour {
 			Unmute();
 			muteButton.image.sprite  = mutes[0];
 		}
+
 		logoCanvas.enabled = true;
 		scoreAnimator.enabled = false;
 		logoAnimator.enabled = true;
