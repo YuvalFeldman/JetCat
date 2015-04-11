@@ -30,7 +30,7 @@ public class CameraZoom : MonoBehaviour {
 			}
 		}
 
-		logoCanvas.enabled = true;
+		logoCanvas.GetComponent<CanvasGroup>().alpha = 1;
 		scoreAnimator.enabled = false;
 		logoAnimator.enabled = true;
 		animatorCamera.enabled = true;
