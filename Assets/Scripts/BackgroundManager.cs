@@ -59,7 +59,7 @@ public class BackgroundManager : MonoBehaviour {
 
 	int DEATH_COLLISION_LAYER = 17;
 
-	bool theme1;
+	public bool theme1;
 
 	// Use this for initialization
 	void Start () {

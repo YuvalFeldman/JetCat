@@ -4,7 +4,6 @@ using System.Collections;
 
 public class CameraZoom : MonoBehaviour {
 
-
 	public AudioSource music, purr, meow;
 	public Animator animatorCamera, menuAnimator, logoAnimator, scoreAnimator;
 	public bool firstRun;
@@ -12,6 +11,7 @@ public class CameraZoom : MonoBehaviour {
 	public Text text;
 	public Sprite[] mutes;
 	public Button muteButton;
+	public Button muteButtonLose;
 
 	void Start () {
 		//text = GameObject.Find ("ScoreText").GetComponent<Text>();
@@ -19,9 +19,15 @@ public class CameraZoom : MonoBehaviour {
 		if(LevelManager.manager.mute){
 			Mute ();
 			muteButton.image.sprite = mutes[1];
+			if (muteButtonLose != null) {
+				muteButtonLose.image.sprite = mutes[0];
+			}
 		} else {
 			Unmute();
 			muteButton.image.sprite  = mutes[0];
+			if (muteButtonLose != null) {
+				muteButtonLose.image.sprite = mutes[0];
+			}
 		}
 
 		logoCanvas.enabled = true;
@@ -36,6 +42,27 @@ public class CameraZoom : MonoBehaviour {
 	}
 
 	void Update(){
+
+		if (meow == null || purr == null) {
+			meow = GameObject.Find("Main Camera").GetComponent<AudioSource>();
+			purr = GameObject.Find ("WallOfScore").GetComponent<AudioSource>();
+		}
+
+		if(LevelManager.manager.mute){
+			Mute ();
+			muteButton.image.sprite = mutes[1];
+			if (muteButtonLose != null) {
+				muteButtonLose.image.sprite = mutes[1];
+			} 
+
+		} else {
+			Unmute();
+			muteButton.image.sprite  = mutes[0];
+			if (muteButtonLose != null) {
+				muteButtonLose.image.sprite = mutes[0];
+		
+			} 
+		}
 
 		if (animatorCamera != null) {
 
@@ -69,9 +96,15 @@ public class CameraZoom : MonoBehaviour {
 		if(LevelManager.manager.mute){
 			Unmute();
 			muteButton.image.sprite = mutes[0];
+			if (muteButtonLose != null) {
+				muteButtonLose.image.sprite = mutes[0];
+			}
 		} else {
 			Mute ();
 			muteButton.image.sprite =  mutes[1];
+			if (muteButtonLose != null) {
+				muteButtonLose.image.sprite = mutes[1];
+			}
 		}
 	}
 
@@ -81,6 +114,7 @@ public class CameraZoom : MonoBehaviour {
 		purr.enabled = false;
 		meow.enabled = false;
 		LevelManager.manager.mute = true;
+		LevelManager.manager.Save ();
 	}
 
 	public void Unmute(){
@@ -88,5 +122,6 @@ public class CameraZoom : MonoBehaviour {
 		purr.enabled = true;
 		meow.enabled = true;
 		LevelManager.manager.mute = false;
+		LevelManager.manager.Save ();
 	}
 }

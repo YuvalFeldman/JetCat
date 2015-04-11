@@ -20,8 +20,8 @@ public class Jump : MonoBehaviour {
 	bool firstParticleDestroy = true;
 
 	public Animator plusAnimator;
-	public Text scoreText, plusText, finalScore;
-	private int score = 0;
+	public Text scoreText, plusText, finalScore, highScore;
+	public int score = 0;
 
 	public bool firstJumpHappened = false;
 	private AudioSource meowSource;
