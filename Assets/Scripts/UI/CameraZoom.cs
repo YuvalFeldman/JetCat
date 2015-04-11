@@ -75,16 +75,16 @@ public class CameraZoom : MonoBehaviour {
 
 
 	public void Mute(){
-		music.enabled = false;
-		purr.enabled = false;
-		meow.enabled = false;
+		music.volume = 0;
+		purr.volume = 0;
+		meow.volume = 0;
 		LevelManager.manager.mute = true;
 	}
 
 	public void Unmute(){
-		music.enabled = true;
-		purr.enabled = true;
-		meow.enabled = true;
+		music.volume = 0.05f;
+		purr.volume = 0.4f;
+		meow.volume = 0.493f;
 		LevelManager.manager.mute = false;
 	}
 }

@@ -33,7 +33,6 @@ public class LoseScreen : MonoBehaviour {
 	
 	// Update is called once per frame
 	public void RestartLevel () {
-		LevelManager.manager.Load();
 		Application.LoadLevel (Application.loadedLevel);
 		loseScreen.enabled = false;
 	}
