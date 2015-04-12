@@ -2519,6 +2519,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa45252747451548b10b855a4f09cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  overviewTexture: {fileID: 0}
+  OVcamera: {fileID: 1430297013}
+  path: 
 --- !u!50 &742575539
 Rigidbody2D:
   m_ObjectHideFlags: 0
