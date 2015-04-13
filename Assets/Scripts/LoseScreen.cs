@@ -14,7 +14,11 @@ public class LoseScreen : MonoBehaviour {
 	// Use this for initialization
 	public void ShareImage () {
 		#if UNITY_ANDROID
+			
+			Application.CaptureScreenshot("/Screenshot.png");
+			
 			string destination = Application.persistentDataPath + "/Screenshot.png";
+			Debug.Log (destination);
 			// block to open the file and share it ------------START
 			AndroidJavaClass intentClass = new AndroidJavaClass("android.content.Intent");
 			AndroidJavaObject intentObject = new AndroidJavaObject("android.content.Intent");

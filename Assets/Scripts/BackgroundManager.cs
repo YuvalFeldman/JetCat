@@ -102,21 +102,21 @@ public class BackgroundManager : MonoBehaviour {
 			DeactivateTrees();
 			BackGround.GetComponent<SpriteRenderer>().sprite = BackGroundSprite2;
 
-			Pyramid1.transform.position = new Vector3(Random.Range (-1f, 2f), Random.Range (-12f, -8f), 0);
+			Pyramid1.transform.position = new Vector3(Random.Range (2f, 5f), Random.Range (-12f, -8f), 0);
 
-			Pyramid2.transform.position = new Vector3(Pyramid1.transform.position.x + Random.Range (0, 7f), Random.Range (-12f, -8f), 0);
+			Pyramid2.transform.position = new Vector3(Pyramid1.transform.position.x + Random.Range (3f, 7f), Random.Range (-12f, -8f), 0);
 
-			Pyramid3.transform.position = new Vector3(Pyramid2.transform.position.x + Random.Range (0, 7f), Random.Range (-12f, -8f), 0);
+			Pyramid3.transform.position = new Vector3(Pyramid2.transform.position.x + Random.Range (3, 7f), Random.Range (-12f, -8f), 0);
 
-			Pyramid4.transform.position = new Vector3(Pyramid3.transform.position.x + Random.Range (0, 7f), Random.Range (-12f, -8f), 0);
+			Pyramid4.transform.position = new Vector3(Pyramid3.transform.position.x + Random.Range (3, 7f), Random.Range (-12f, -8f), 0);
 
-			Pyramid5.transform.position = new Vector3(Pyramid4.transform.position.x + Random.Range (0, 7f), Random.Range (-12f, -8f), 0);
+			Pyramid5.transform.position = new Vector3(Pyramid4.transform.position.x + Random.Range (3, 7f), Random.Range (-12f, -8f), 0);
 			
-			Pyramid6.transform.position = new Vector3(Pyramid5.transform.position.x + Random.Range (0, 7f), Random.Range (-12f, -8f), 0);
+			Pyramid6.transform.position = new Vector3(Pyramid5.transform.position.x + Random.Range (3, 7f), Random.Range (-12f, -8f), 0);
 			
-			Pyramid7.transform.position = new Vector3(Pyramid6.transform.position.x + Random.Range (0, 7f), Random.Range (-12f, -8f), 0);
+			Pyramid7.transform.position = new Vector3(Pyramid6.transform.position.x + Random.Range (3, 7f), Random.Range (-12f, -8f), 0);
 			
-			Pyramid8.transform.position = new Vector3(Pyramid7.transform.position.x + Random.Range (0, 7f), Random.Range (-12f, -8f), 0);
+			Pyramid8.transform.position = new Vector3(Pyramid7.transform.position.x + Random.Range (3, 7f), Random.Range (-12f, -8f), 0);
 
 
 			LastPyramid = Pyramid4;
@@ -171,7 +171,7 @@ public class BackgroundManager : MonoBehaviour {
 			} else {
 				GameObject pyramid = other.gameObject;
 
-				pyramid.transform.position = new Vector3(LastPyramid.transform.position.x + Random.Range (0, 7f), Random.Range (-12f, -8f), 0);
+				pyramid.transform.position = new Vector3(LastPyramid.transform.position.x + Random.Range (1, 7f), Random.Range (-12f, -8f), 0);
 				LastPyramid = pyramid;
 
 			}

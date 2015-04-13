@@ -44,7 +44,7 @@ public class Jump : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
 
 		if (startedRotating) {
 			return;
@@ -56,48 +56,97 @@ public class Jump : MonoBehaviour {
 			return;
 		}
 
-		SoundPower = GetComponent<SoundForm> ().getLoudness () * 5;
+		// this is backwards because it's 4 AM and I am way too fucking tired to change it
+		if (LevelManager.manager.touch) {
 
-		if (SoundPower >= 5 && grounded) {
-			if (!time) {
-				jumpyReady = true;
-				if (SoundPower > jumpPower) {
-					jumpPower = SoundPower;
+			SoundPower = GetComponent<SoundForm> ().getLoudness () * 10 * LevelManager.manager.sliderValue;
+
+			Debug.Log (SoundPower);
+
+			if (SoundPower >= 5f && grounded) {
+				if (!time) {
+					jumpyReady = true;
+					if (SoundPower > jumpPower) {
+						jumpPower = SoundPower;
+					}
+				} else {
+					if (smallJetStream == null) {
+						if (firstParticleDestroy) {
+							smallJetStream = (GameObject)Instantiate (startSmallJetStream, new Vector3 (-2.277f, -6.872f, -3.25f), startSmallJetStream.transform.rotation);
+						} else {
+
+						}
+					}
+					jumpyReady = true;
+					powerBar.fillAmount = jumpPower / 10;
+					jumpPower += 0.2f;
+					//Debug.Log(jumpPower);
 				}
-			} else {
+			}
+
+			if (jumpyReady && SoundPower < 1 && grounded) {
+
+				plusAnimator.SetBool ("Increased", false);
+
+				meowSource.Play ();
+
+				if (!firstJumpHappened) {
+					firstJumpHappened = true;
+				}
+				Destroy (smallJetStream);
+				largeJetEmitter.Play ();
+				jumpPower = Mathf.Clamp (jumpPower, 2.5f, 10f);
+
+				Player.velocity = new Vector3 (0, jumpPower, 0);
+				jumpPower = 0;
+				CatAnimator.SetBool ("notgrounded", true);
+				grounded = false;
+				jumpyReady = false;
+			} 
+
+		} else {
+
+			if(Input.touchCount > 0)
+			{
+				Touch touch = Input.touches[0];
+
 				if (smallJetStream == null) {
 					if (firstParticleDestroy) {
-						smallJetStream = (GameObject)Instantiate (startSmallJetStream, new Vector3(-2.277f, -6.872f, -3.25f), startSmallJetStream.transform.rotation);
+						smallJetStream = (GameObject)Instantiate (startSmallJetStream, new Vector3 (-2.277f, -6.872f, -3.25f), startSmallJetStream.transform.rotation);
 					} else {
-
+						
 					}
 				}
 				jumpyReady = true;
 				powerBar.fillAmount = jumpPower / 10;
 				jumpPower += 0.2f;
-				//Debug.Log(jumpPower);
+
+				
+				switch(touch.phase) {
+
+				case TouchPhase.Ended:
+					if (grounded) {
+						plusAnimator.SetBool ("Increased", false);
+						
+						meowSource.Play ();
+						
+						if (!firstJumpHappened) {
+							firstJumpHappened = true;
+						}
+						Destroy (smallJetStream);
+						largeJetEmitter.Play ();
+						jumpPower = Mathf.Clamp (jumpPower, 2.5f, 10f);
+						
+						Player.velocity = new Vector3 (0, jumpPower, 0);
+						jumpPower = 0;
+						CatAnimator.SetBool ("notgrounded", true);
+						grounded = false;
+						jumpyReady = false;
+					}
+					break;
+				}
 			}
 		}
-
-		if (jumpyReady && SoundPower < 1 && grounded) {
-
-			plusAnimator.SetBool("Increased", false);
-
-			meowSource.Play();
-
-			if (!firstJumpHappened) {
-				firstJumpHappened = true;
-			}
-			Destroy (smallJetStream);
-			largeJetEmitter.Play ();
-			jumpPower = Mathf.Clamp (jumpPower, 2.5f, 10f);
-
-			Player.velocity = new Vector3 (0, jumpPower, 0);
-			jumpPower = 0;
-			CatAnimator.SetBool ("notgrounded", true);
-			grounded = false;
-			jumpyReady = false;
-		} 
 
 		//Debug.Log(SoundPower);
 		/*if (Input.GetKeyUp (KeyCode.Space) ) {

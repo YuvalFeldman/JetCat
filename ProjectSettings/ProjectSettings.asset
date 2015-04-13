@@ -76,13 +76,13 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleIdentifier: com.whoopstudios.jetcat
-  bundleVersion: 1.0
+  bundleVersion: 1.2
   preloadedAssets: []
   metroEnableIndependentInputSource: 1
   metroEnableLowLatencyPresentationAPI: 0
   xboxOneDisableKinectGpuReservation: 0
   productGUID: 5c596556decb141888be121e4494e18f
-  AndroidBundleVersionCode: 1
+  AndroidBundleVersionCode: 12
   AndroidMinSdkVersion: 9
   AndroidPreferredInstallLocation: 1
   aotOptions: 

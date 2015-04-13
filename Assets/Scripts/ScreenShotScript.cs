@@ -7,17 +7,22 @@ public class ScreenShotScript : MonoBehaviour
 	public RenderTexture overviewTexture;
 	public GameObject OVcamera;
 	public string path = "";
-	
+	private Camera camera;
+
+	void Start() {
+		camera = OVcamera.GetComponent<Camera> ();
+	}
+
 	void OnTriggerEnter2D(Collider2D other)
 	{
 
-		StartCoroutine(TakeScreenShot());
-		
+		//StartCoroutine(TakeScreenShot());
+
 	}
 	
 	// return file name
-
 	
+
 	public IEnumerator TakeScreenShot()
 	{
 		yield return new WaitForEndOfFrame();
@@ -40,8 +45,11 @@ public class ScreenShotScript : MonoBehaviour
 		
 		// save in memory
 		path = Application.persistentDataPath + "/Screenshot.png";
+
+		Debug.Log (path);
 		
 		System.IO.File.WriteAllBytes(path, bytes);
 	}
+
 }
 

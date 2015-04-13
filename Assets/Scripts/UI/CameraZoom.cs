@@ -10,8 +10,12 @@ public class CameraZoom : MonoBehaviour {
 	public Canvas menuCanvas, scoreCanvas, logoCanvas;
 	public Text text;
 	public Sprite[] mutes;
+	public Sprite[] mics;
+
 	public Button muteButton;
 	public Button muteButtonLose;
+	public Button micMenu;
+	public Button micLose;
 
 	void Start () {
 		//text = GameObject.Find ("ScoreText").GetComponent<Text>();
@@ -28,6 +32,18 @@ public class CameraZoom : MonoBehaviour {
 			if (muteButtonLose != null) {
 				muteButtonLose.image.sprite = mutes[0];
 			}
+		}
+
+		if (!LevelManager.manager.touch) {
+			micMenu.image.sprite = mics [1];
+			micMenu.GetComponent<MicMenu>().slider.alpha = 0;
+			micLose.image.sprite = mics[1];
+			micLose.GetComponent<MicLose>().slider.alpha = 0;
+		} else {
+			micMenu.image.sprite = mics [0];
+			micMenu.GetComponent<MicMenu>().slider.alpha = 1;
+			micLose.image.sprite = mics[0];
+			micLose.GetComponent<MicLose>().slider.alpha = 1;
 		}
 
 		logoCanvas.GetComponent<CanvasGroup>().alpha = 1;
@@ -48,6 +64,7 @@ public class CameraZoom : MonoBehaviour {
 			purr = GameObject.Find ("WallOfScore").GetComponent<AudioSource>();
 		}
 
+
 		if(LevelManager.manager.mute){
 			Mute ();
 			muteButton.image.sprite = mutes[1];
@@ -62,6 +79,19 @@ public class CameraZoom : MonoBehaviour {
 				muteButtonLose.image.sprite = mutes[0];
 		
 			} 
+		}
+
+		if (!LevelManager.manager.touch) {
+			micMenu.image.sprite = mics [1];
+			micMenu.GetComponent<MicMenu> ().slider.alpha = 0;
+			micLose.image.sprite = mics[1];
+			micLose.GetComponent<MicLose> ().slider.alpha = 0;
+
+		} else {
+			micMenu.image.sprite = mics [0];
+			micMenu.GetComponent<MicMenu> ().slider.alpha = 1;
+			micLose.image.sprite = mics[0];
+			micLose.GetComponent<MicLose> ().slider.alpha = 1;
 		}
 
 		if (animatorCamera != null) {
@@ -81,7 +111,19 @@ public class CameraZoom : MonoBehaviour {
 		}
 	}
 
+	public void MicButtonOnClick() { 
+		if (!LevelManager.manager.touch) {
+			LevelManager.manager.touch = true;
+			LevelManager.manager.Save ();
+		} else {
+			LevelManager.manager.touch = false;
+			LevelManager.manager.Save ();
+		}
+	}
+
 	public void Play () {
+		LevelManager.manager.disableMicMenuSlider = true;
+		micMenu.GetComponent<MicMenu> ().enabled = false;
 		menuAnimator.SetBool("Fade", false);
 		animatorCamera.SetBool("Zoom", true);
 		firstRun = false;
@@ -108,6 +150,12 @@ public class CameraZoom : MonoBehaviour {
 		}
 	}
 
+	public void TouchButton() {
+		if (LevelManager.manager.touch) {
+
+		}
+		LevelManager.manager.touch = !LevelManager.manager.touch;
+	}
 
 	public void Mute(){
 		music.enabled = false;

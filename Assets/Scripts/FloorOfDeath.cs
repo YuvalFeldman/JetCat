@@ -25,6 +25,8 @@ public class FloorOfDeath : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
 
+
+
 		if (themeObject.GetComponent<BackgroundManager> ().theme1) {
 			MockBackground.GetComponent<SpriteRenderer> ().sprite = background1;
 		} else {
@@ -49,10 +51,12 @@ public class FloorOfDeath : MonoBehaviour {
 			medal.sprite = medalAwesome;
 		}
 
+		/*
 		LevelManager.manager.adsCounter--;
 		if (LevelManager.manager.adsCounter <= 0) {
 			LevelManager.manager.DisplayAd();
 		}
+		*/
 
 		if (score > LevelManager.manager.highScore) {
 			highScore.text = "" + score;
