@@ -88,7 +88,7 @@ public class Jump : MonoBehaviour {
 
 				plusAnimator.SetBool ("Increased", false);
 
-				meowSource.Play ();
+				//meowSource.Play ();
 
 				if (!firstJumpHappened) {
 					firstJumpHappened = true;
@@ -108,18 +108,21 @@ public class Jump : MonoBehaviour {
 
 			if(Input.touchCount > 0)
 			{
-				Touch touch = Input.touches[0];
+				if (grounded) {
 
-				if (smallJetStream == null) {
-					if (firstParticleDestroy) {
-						smallJetStream = (GameObject)Instantiate (startSmallJetStream, new Vector3 (-2.277f, -6.872f, -3.25f), startSmallJetStream.transform.rotation);
-					} else {
-						
+					Touch touch = Input.touches[0];
+
+					if (smallJetStream == null) {
+						if (firstParticleDestroy) {
+							smallJetStream = (GameObject)Instantiate (startSmallJetStream, new Vector3 (-2.277f, -6.872f, -3.25f), startSmallJetStream.transform.rotation);
+						} else {
+							
+						}
 					}
-				}
-				jumpyReady = true;
-				powerBar.fillAmount = jumpPower / 10;
-				jumpPower += 0.2f;
+					jumpyReady = true;
+					powerBar.fillAmount = jumpPower / 10;
+					jumpPower += 0.2f;
+				
 
 				
 				switch(touch.phase) {
@@ -128,7 +131,7 @@ public class Jump : MonoBehaviour {
 					if (grounded) {
 						plusAnimator.SetBool ("Increased", false);
 						
-						meowSource.Play ();
+						//meowSource.Play ();
 						
 						if (!firstJumpHappened) {
 							firstJumpHappened = true;
@@ -144,6 +147,7 @@ public class Jump : MonoBehaviour {
 						jumpyReady = false;
 					}
 					break;
+				}
 				}
 			}
 		}

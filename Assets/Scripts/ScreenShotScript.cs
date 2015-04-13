@@ -4,6 +4,7 @@ using System;
 
 public class ScreenShotScript : MonoBehaviour
 {
+	public AudioSource meowSource;
 	public RenderTexture overviewTexture;
 	public GameObject OVcamera;
 	public string path = "";
@@ -15,6 +16,7 @@ public class ScreenShotScript : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
+		meowSource.Play ();
 
 		//StartCoroutine(TakeScreenShot());
 
