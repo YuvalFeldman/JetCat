@@ -58,7 +58,7 @@ public class ManageWalls : MonoBehaviour {
 
 	void refreshRandom() {
 
-		xRange = Random.Range (1.5f, 4.4f);
+		xRange = Random.Range (1.5f, 3.9f);
 
 		if (xRange < 2.5f) {
 			yRange = Random.Range (0, 0.3f);
